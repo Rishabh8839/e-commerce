@@ -31,7 +31,7 @@ const Checkout = () => {
   }
 
   const onHandleClick = (param) => {
-    console.log(param);
+    // console.log(param);
     switch (param) {
       case 'Contenue':
         setshowLogin(false)
@@ -47,6 +47,30 @@ const Checkout = () => {
         break
     }
   };
+
+  const change = (param) => {
+    // console.log(param);
+   switch (param) {
+      case 'Contenue':
+        setshowLogin(true)
+        setShowDelivery(false)
+        setshowOrderSummery(false)
+        setshowPaymewnt(false)
+        break
+      case 'Deliver':
+        setshowLogin(false)
+        setShowDelivery(true)
+        setshowOrderSummery(false)
+        setshowPaymewnt(false)
+        break
+      case 'Order':
+         setshowLogin(false)
+        setShowDelivery(false)
+        setshowOrderSummery(true)
+        setshowPaymewnt(false)
+        break
+    }
+  };
  
   return (
     <div className="layout">
@@ -58,7 +82,7 @@ const Checkout = () => {
               <div className="card-header" >
                 <div className='d-flex justify-content-between'>
                   <h4 >Login</h4>
-                  {!showLogin && <button className='btn btn-light' onClick={() => setshowLogin(true)}>Change</button>}
+                  {!showLogin && <button className='btn btn-light' onClick={() => change('Contenue')}>Change</button>}
                 </div>
               </div>
               {showLogin &&
@@ -109,7 +133,7 @@ const Checkout = () => {
               <div className="card-header" >
                 <div className='d-flex justify-content-between'>
                   <h4 >Delivery Address</h4>
-                  {!showDelivery && <button className='btn btn-light' onClick={() => setShowDelivery(false)}>Change</button>}
+                  {!showDelivery && <button className='btn btn-light' onClick={() => change('Deliver')}>Change</button>}
                 </div>
               </div>
               {showDelivery &&
@@ -136,7 +160,7 @@ const Checkout = () => {
               <div className="card-header" >
                 <div className='d-flex justify-content-between'>
                   <h4 >Order Summary</h4>
-                  {!showOrderSummery && <button className='btn btn-light' onClick={() => setshowOrderSummery(false)}>Change</button>}
+                  {!showOrderSummery && <button className='btn btn-light' onClick={() => change('Order')}>Change</button>}
                 </div>
               </div>
               {showOrderSummery &&
@@ -203,7 +227,7 @@ const Checkout = () => {
               <div className="card-header" >
                 <div className='d-flex justify-content-between'>
                   <h4 >Payment Option</h4>
-                  {showPaymewnt && <button className='btn btn-light' onClick={() => setshowPaymewnt(false)}>Change</button>}
+                  {/* {showPaymewnt && <button className='btn btn-light' onClick={() => change('Contenue')}>Change</button>} */}
                 </div>
               </div>
               {showPaymewnt &&
